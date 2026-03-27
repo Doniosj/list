@@ -21,8 +21,8 @@
         }
         .glass-card {
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .promo-badge {
@@ -34,35 +34,39 @@
             50% { transform: scale(1.02); }
             100% { transform: scale(1); }
         }
-        .category-btn {
-            transition: all 0.2s ease;
+        .tab-btn {
             cursor: pointer;
-            touch-action: manipulation;
+            transition: all 0.2s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
             background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            text-align: center;
+            padding: 12px 0;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 800;
+            user-select: none;
         }
-        .category-btn.active {
-            background-color: #f59e0b !important;
+        .tab-btn:active {
+            transform: scale(0.95);
+        }
+        .tab-btn.active {
+            background: #f59e0b !important;
             color: #000 !important;
-            box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
             border-color: #f59e0b;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
         }
         .urgency-text {
             color: #ff4d4d;
             font-weight: 700;
             font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
         }
     </style>
 </head>
 <body>
 
     <div class="max-w-md w-full px-4">
-        <!-- Акция баннері -->
+        <!-- Жарнамалық баннер -->
         <div class="promo-badge text-white text-center py-2 rounded-t-2xl font-bold text-[10px] tracking-[0.2em] uppercase">
             🔥 ШЕКТЕУЛІ ҰСЫНЫС 🔥
         </div>
@@ -70,28 +74,28 @@
         <div class="glass-card rounded-b-3xl p-6 mb-6">
             <h1 class="text-3xl font-extrabold text-center mb-6 tracking-tight uppercase">PRICE LIST</h1>
 
-            <!-- Санаттарды ауыстырып-қосқыш (Кнопки) -->
-            <div class="grid grid-cols-4 gap-2 mb-8" id="button-container">
-                <button onclick="changePkg('АНА', this)" class="category-btn active py-3 rounded-lg text-[10px] font-black uppercase">АНА</button>
-                <button onclick="changePkg('ЖАН', this)" class="category-btn py-3 rounded-lg text-[10px] font-black uppercase">ЖАН</button>
-                <button onclick="changePkg('ӘКЕ', this)" class="category-btn py-3 rounded-lg text-[10px] font-black uppercase">ӘКЕ</button>
-                <button onclick="changePkg('ӘЖЕ', this)" class="category-btn py-3 rounded-lg text-[10px] font-black uppercase">ӘЖЕ</button>
+            <!-- Санаттарды ауыстырып-қосқыш (Латиницамен) -->
+            <div class="grid grid-cols-4 gap-2 mb-8">
+                <div onclick="selectPkg('ANA')" id="btn-ANA" class="tab-btn active">ANA</div>
+                <div onclick="selectPkg('JAN')" id="btn-JAN" class="tab-btn">JAN</div>
+                <div onclick="selectPkg('AKE')" id="btn-AKE" class="tab-btn">AKE</div>
+                <div onclick="selectPkg('AJE')" id="btn-AJE" class="tab-btn">AJE</div>
             </div>
 
             <!-- Пакет атауы -->
             <div class="text-center mb-6">
-                <h2 id="display-title" class="text-2xl font-bold text-yellow-500 uppercase tracking-wide">Пакет "АНА"</h2>
+                <h2 id="main-title" class="text-2xl font-bold text-yellow-500 uppercase tracking-wide">Пакет "ANA"</h2>
                 <div class="h-0.5 w-12 bg-white/20 mx-auto mt-2"></div>
             </div>
 
-            <!-- Қызметтер тізімі -->
+            <!-- Қызметтер тізімі (Кириллицамен қалды) -->
             <div class="space-y-3 mb-8 text-sm">
                 <div class="flex items-center justify-between py-2 border-b border-white/5">
                     <span class="text-gray-300">💜🤍❤️ Жүрек (Фиол/Ақ/Қызыл)</span>
                     <span class="text-green-400 font-bold">✓</span>
                 </div>
                 <div class="flex items-center justify-between py-2 border-b border-white/5">
-                    <span class="text-gray-300">🎂 Happy birthday (<span id="name-tag" class="text-yellow-500 font-bold">АНА</span>)</span>
+                    <span class="text-gray-300">🎂 Happy birthday (<span id="name-tag" class="text-yellow-500 font-bold">ANA</span>)</span>
                     <span class="text-green-400 font-bold">✓</span>
                 </div>
                 <div class="flex items-center justify-between py-2 border-b border-white/5">
@@ -126,12 +130,12 @@
                 <div class="urgency-text">⌛ Акция аяқталуына 14 күн қалды!</div>
             </div>
 
-            <!-- WhatsApp түймесі -->
+            <!-- Брондау түймесі -->
             <a id="wa-btn" 
                href="#" 
                target="_blank"
-               class="block w-full bg-yellow-500 hover:bg-yellow-400 text-black font-extrabold py-5 rounded-2xl text-center shadow-xl shadow-yellow-500/20 active:scale-95 uppercase tracking-wider transition-all">
-                БРОНЬ ЖАСАУ: <span id="wa-label">АНА</span>
+               class="block w-full bg-yellow-500 text-black font-extrabold py-5 rounded-2xl text-center shadow-xl active:scale-95 uppercase tracking-wider transition-all">
+                БРОНЬ ЖАСАУ: <span id="label-name">ANA</span>
             </a>
         </div>
 
@@ -144,27 +148,28 @@
     <script>
         const phone = "77010183399";
 
-        function changePkg(name, element) {
-            // 1. Смена визуального состояния кнопок
-            const allButtons = document.querySelectorAll('.category-btn');
-            allButtons.forEach(btn => {
+        function selectPkg(name) {
+            // Сбрасываем все кнопки
+            document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            element.classList.add('active');
+            
+            // Активируем нужную
+            document.getElementById('btn-' + name).classList.add('active');
 
-            // 2. Обновление текстов на странице
-            document.getElementById('display-title').innerText = 'Пакет "' + name + '"';
+            // Обновляем текст
+            document.getElementById('main-title').innerText = 'Пакет "' + name + '"';
             document.getElementById('name-tag').innerText = name;
-            document.getElementById('wa-label').innerText = name;
+            document.getElementById('label-name').innerText = name;
 
-            // 3. Обновление ссылки WhatsApp
-            const msg = Сәлеметсіз бе! Мен "${name}" пакетін акциямен 10.000 теңгеге бронь жасайын деп едім.;
-            document.getElementById('wa-btn').href = https://wa.me/${phone}?text=${encodeURIComponent(msg)};
+            // Ссылка WhatsApp
+            const msg = "Сәлеметсіз бе! Мен '" + name + "' пакетін 10.000 теңгеге акциямен броньдағым келеді.";
+            document.getElementById('wa-btn').href = "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
         }
 
-        // Инициализация первой ссылки при загрузке
+        // Инициализация при загрузке страницы
         window.onload = function() {
-            changePkg('АНА', document.querySelector('.category-btn.active'));
+            selectPkg('ANA');
         };
     </script>
 
